@@ -1,0 +1,39 @@
+﻿@model QuanLyDoAn.DeTai
+
+@{
+    ViewBag.Title = "ChiTieDeTai";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align: center; padding-top:20px">CHI TIẾT ĐỀ TÀI</h2>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.tenDeTai)</th>
+                <th>@Html.DisplayNameFor(model => model.soSVThamGia)</th>
+                <th>@Html.DisplayNameFor(model => model.ghiChu)</th>
+                <th>@Html.DisplayNameFor(model => model.soSVDaDangKy)</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="danger">
+                <td>@Html.DisplayFor(model => model.tenDeTai)</td>
+                <td>@Html.DisplayFor(model => model.soSVThamGia)</td>
+                <td>@Html.DisplayFor(model => model.ghiChu)</td>
+                <td>@Html.DisplayFor(model => model.soSVDaDangKy)</td>
+                
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+<div>
+   <p style="display: flex;">
+
+    <a style="" class="nav-link" href="@Url.Action("DeTai", "Admin")">Trở Về Danh Sách Đề Tài</a>
+    </p>
+</div>
+

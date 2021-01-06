@@ -1,0 +1,74 @@
+﻿@model PagedList.PagedList<QuanLyDoAn.TaiKhoan>
+@using PagedList.Mvc;
+@using QuanLyDoAn.Models
+@{
+    ViewBag.Title = "TaiKhoan";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align: center; padding-top: 20px">DANH SÁCH CÁC TÀI KHOẢN ĐƯỢC ĐĂNG KÍ Ở WEBSITE</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().passWord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().loaiTaiKhoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().GiangVien.tenGiangVien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().QuanTri.tenQuanLy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SinhVien.tenSinhVien)
+        </th>
+        <th> Chức năng</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.passWord)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.loaiTaiKhoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiangVien.tenGiangVien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuanTri.tenQuanLy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SinhVien.tenSinhVien)
+        </td>
+        <td>
+              @Html.ActionLink("Sửa", "UpdateTaiKhoan", new { id=item.ID}) |    
+            @Html.ActionLink("Xóa", "XoaTaiKhoan", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+@*Tao Lien Ket Trang*@
+&nbsp; Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("TaiKhoan", new { page = page}))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+        padding: 3px;
+        margin-left: 20px;
+    }
+    .hihi
+    {
+        text-decoration: none;
+        color: red;
+    }
+</style>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<QuanLyDoAn.SinhVien>
+
+@{
+    ViewBag.Title = "DANH SÁCH SINH VIÊN";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h3 align="center">DANH SÁCH SINH VIÊN ĐANG HƯỚNG DẪN</h3>
+</div>
+
+<br />
+<table class="table">
+    <tr>
+        <th>
+            <p>STT</p>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tenSinhVien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngaySinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gioiTinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeTai.maDeTai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeTai.tenDeTai)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        int count = 1;
+        <tr>
+            <td>
+                <p></p>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenSinhVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soDienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngaySinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeTai.maDeTai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeTai.tenDeTai)
+            </td>
+        </tr>
+        count++;
+    }
+
+</table>

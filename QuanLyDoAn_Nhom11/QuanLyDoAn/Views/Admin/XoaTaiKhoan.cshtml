@@ -1,0 +1,44 @@
+﻿@model QuanLyDoAn.TaiKhoan
+
+@{
+    ViewBag.Title = "XoaTaiKhoan";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align: center; padding-top: 20px">XÓA TÀI KHOẢN</h2>
+
+<h3>Bạn có chắc chắn xóa tài khoản?</h3>
+<div>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.passWord)</th>
+                <th>@Html.DisplayNameFor(model => model.loaiTaiKhoan)</th>
+                <th>@Html.DisplayNameFor(model => model.GiangVien.tenGiangVien)</th>
+                <th>@Html.DisplayNameFor(model => model.QuanTri.tenQuanLy)</th>
+                <th>@Html.DisplayNameFor(model => model.SinhVien.tenSinhVien)</th>
+            </tr>
+        </thead>
+        <tbody>      
+            <tr class="danger">
+                <td>@Html.DisplayFor(model => model.passWord)</td>
+                <td>@Html.DisplayFor(model => model.loaiTaiKhoan)</td>
+                <td>@Html.DisplayFor(model => model.GiangVien.tenGiangVien)</td>
+                <td>@Html.DisplayFor(model => model.QuanTri.tenQuanLy)</td>
+                <td>@Html.DisplayFor(model => model.SinhVien.tenSinhVien)</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+  
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color"  style="text-align:center">
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+         
+        </div>
+    }
+</div>

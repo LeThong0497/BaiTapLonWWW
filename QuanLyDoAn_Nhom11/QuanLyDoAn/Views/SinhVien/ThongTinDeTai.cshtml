@@ -1,0 +1,58 @@
+﻿@model QuanLyDoAn.Models.ChiTietDeTaiModel
+
+@{
+    ViewBag.Title = "ThongTinDeTai";
+}
+<link href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<h2>Thông tin đề tài</h2>
+
+<div>
+    <h4>Thông tin chi tiết</h4>
+    <hr />
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Mã Đề Tài</th>
+                    <th scope="col">Tên Đề Tài</th>
+                    <th scope="col">Giảng Viên Hướng Đẫn</th>
+                    <th scope="col">Ghi Chú</th>
+                    <th scope="col">Nhận Xét</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.MaDeTai</td>
+                    <td>@Model.TenDeTai</td>
+                    <td>@Model.TenGiangVien</td>
+                    <td>@Model.GhiChu</td>
+                    <td>@Model.NhanXet</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th scope="col">Số SV Thực Hiện</th>
+                    <th scope="col">Số SV Đăng Ký</th>
+                    <th scope="col">Email Giảng Viên</th>
+                    <th scope="col">Số Điện Thoại GV</th>
+                    <th scope="col">Điểm Thực Hiện Đề Tài</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.SoSinhVienThamGia</td>
+                    <td>@Model.SoSinhVienDangKy</td>
+                    <td>@Model.Email</td>
+                    <td>@Model.SoDienThoai</td>
+                    <td>@Model.DiemDeTai</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = @Session["TaiKhoanAdmin"] })
+</div>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="58451907fcab4821a809ab0b5086e453" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="QLDoAnSinhVienModel.DeTai" Width="1.5" PointX="12.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDoAnSinhVienModel.GiangVien" Width="1.5" PointX="13.875" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDoAnSinhVienModel.HuongDan" Width="1.5" PointX="14.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDoAnSinhVienModel.QuanTri" Width="1.5" PointX="11.625" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDoAnSinhVienModel.SinhVien" Width="1.5" PointX="8.125" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDoAnSinhVienModel.sysdiagram" Width="1.5" PointX="3.875" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLDoAnSinhVienModel.TaiKhoan" Width="1.5" PointX="10.375" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="QLDoAnSinhVienModel.FK_HuongDan_DeTai" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDoAnSinhVienModel.FK_SinhVien_DeTai" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDoAnSinhVienModel.FK_GiangVien_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDoAnSinhVienModel.FK_HuongDan_GiangVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDoAnSinhVienModel.FK_QuanTri_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="QLDoAnSinhVienModel.FK_SinhVien_TaiKhoan" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

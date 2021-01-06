@@ -1,0 +1,40 @@
+﻿@model QuanLyDoAn.QuanTri
+
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>TrangChu</h2>
+
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.tenQuanLy)</th>
+                <th>@Html.DisplayNameFor(model => model.gioiTinh)</th>
+                <th>@Html.DisplayNameFor(model => model.email)</th>
+                <th>@Html.DisplayNameFor(model => model.soDienThoai)</th>
+                <th>@Html.DisplayNameFor(model => model.ngaySinh)</th>
+                <th>@Html.DisplayNameFor(model => model.TaiKhoan.passWord)</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="danger">
+                <td>@Html.DisplayFor(model => model.tenQuanLy)</td>
+                <td>@Html.DisplayFor(model => model.gioiTinh)</td>
+                <td>@Html.DisplayFor(model => model.email)</td>
+                <td>@Html.DisplayFor(model => model.soDienThoai)</td>
+                <td>@Html.DisplayFor(model => model.ngaySinh)</td>
+                <td>@Html.DisplayFor(model => model.TaiKhoan.passWord)</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maQuanLy }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLDoAnSinhVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DeTai">
+    <Key>
+      <PropertyRef Name="maDeTai" />
+    </Key>
+    <Property Name="maDeTai" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="tenDeTai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="soSVThamGia" Type="Int32" />
+    <Property Name="ghiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="soSVDaDangKy" Type="Int32" />
+    <NavigationProperty Name="HuongDans" Relationship="Self.FK_HuongDan_DeTai" FromRole="DeTai" ToRole="HuongDan" />
+    <NavigationProperty Name="SinhViens" Relationship="Self.FK_SinhVien_DeTai" FromRole="DeTai" ToRole="SinhVien" />
+  </EntityType>
+  <EntityType Name="GiangVien">
+    <Key>
+      <PropertyRef Name="maGiangVien" />
+    </Key>
+    <Property Name="maGiangVien" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="tenGiangVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="soDienThoai" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="ngaySinh" Type="DateTime" Precision="0" />
+    <Property Name="gioiTinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_GiangVien_TaiKhoan" FromRole="GiangVien" ToRole="TaiKhoan" />
+    <NavigationProperty Name="HuongDans" Relationship="Self.FK_HuongDan_GiangVien" FromRole="GiangVien" ToRole="HuongDan" />
+  </EntityType>
+  <EntityType Name="HuongDan">
+    <Key>
+      <PropertyRef Name="maGiangVien" />
+      <PropertyRef Name="maDeTai" />
+    </Key>
+    <Property Name="maGiangVien" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="maDeTai" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="nhanXet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="diemDeTai" Type="Double" />
+    <NavigationProperty Name="DeTai" Relationship="Self.FK_HuongDan_DeTai" FromRole="HuongDan" ToRole="DeTai" />
+    <NavigationProperty Name="GiangVien" Relationship="Self.FK_HuongDan_GiangVien" FromRole="HuongDan" ToRole="GiangVien" />
+  </EntityType>
+  <EntityType Name="QuanTri">
+    <Key>
+      <PropertyRef Name="maQuanLy" />
+    </Key>
+    <Property Name="maQuanLy" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="tenQuanLy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="gioiTinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="soDienThoai" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ngaySinh" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_QuanTri_TaiKhoan" FromRole="QuanTri" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="SinhVien">
+    <Key>
+      <PropertyRef Name="maSinhVien" />
+    </Key>
+    <Property Name="maSinhVien" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="tenSinhVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="soDienThoai" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="ngaySinh" Type="DateTime" Precision="0" />
+    <Property Name="gioiTinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="maDeTai" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="DeTai" Relationship="Self.FK_SinhVien_DeTai" FromRole="SinhVien" ToRole="DeTai" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_SinhVien_TaiKhoan" FromRole="SinhVien" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="passWord" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="loaiTaiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="GiangVien" Relationship="Self.FK_GiangVien_TaiKhoan" FromRole="TaiKhoan" ToRole="GiangVien" />
+    <NavigationProperty Name="QuanTri" Relationship="Self.FK_QuanTri_TaiKhoan" FromRole="TaiKhoan" ToRole="QuanTri" />
+    <NavigationProperty Name="SinhVien" Relationship="Self.FK_SinhVien_TaiKhoan" FromRole="TaiKhoan" ToRole="SinhVien" />
+  </EntityType>
+  <Association Name="FK_HuongDan_DeTai">
+    <End Role="DeTai" Type="Self.DeTai" Multiplicity="1" />
+    <End Role="HuongDan" Type="Self.HuongDan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeTai">
+        <PropertyRef Name="maDeTai" />
+      </Principal>
+      <Dependent Role="HuongDan">
+        <PropertyRef Name="maDeTai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SinhVien_DeTai">
+    <End Role="DeTai" Type="Self.DeTai" Multiplicity="0..1" />
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeTai">
+        <PropertyRef Name="maDeTai" />
+      </Principal>
+      <Dependent Role="SinhVien">
+        <PropertyRef Name="maDeTai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiangVien_TaiKhoan">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GiangVien">
+        <PropertyRef Name="maGiangVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HuongDan_GiangVien">
+    <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="1" />
+    <End Role="HuongDan" Type="Self.HuongDan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiangVien">
+        <PropertyRef Name="maGiangVien" />
+      </Principal>
+      <Dependent Role="HuongDan">
+        <PropertyRef Name="maGiangVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuanTri_TaiKhoan">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="QuanTri" Type="Self.QuanTri" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuanTri">
+        <PropertyRef Name="maQuanLy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SinhVien_TaiKhoan">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
+    <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SinhVien">
+        <PropertyRef Name="maSinhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLDoAnSinhVienEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DeTais" EntityType="Self.DeTai" />
+    <EntitySet Name="GiangViens" EntityType="Self.GiangVien" />
+    <EntitySet Name="HuongDans" EntityType="Self.HuongDan" />
+    <EntitySet Name="QuanTris" EntityType="Self.QuanTri" />
+    <EntitySet Name="SinhViens" EntityType="Self.SinhVien" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+    <AssociationSet Name="FK_HuongDan_DeTai" Association="Self.FK_HuongDan_DeTai">
+      <End Role="DeTai" EntitySet="DeTais" />
+      <End Role="HuongDan" EntitySet="HuongDans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SinhVien_DeTai" Association="Self.FK_SinhVien_DeTai">
+      <End Role="DeTai" EntitySet="DeTais" />
+      <End Role="SinhVien" EntitySet="SinhViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiangVien_TaiKhoan" Association="Self.FK_GiangVien_TaiKhoan">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="GiangVien" EntitySet="GiangViens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HuongDan_GiangVien" Association="Self.FK_HuongDan_GiangVien">
+      <End Role="GiangVien" EntitySet="GiangViens" />
+      <End Role="HuongDan" EntitySet="HuongDans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuanTri_TaiKhoan" Association="Self.FK_QuanTri_TaiKhoan">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="QuanTri" EntitySet="QuanTris" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SinhVien_TaiKhoan" Association="Self.FK_SinhVien_TaiKhoan">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="SinhVien" EntitySet="SinhViens" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QLDoAnSinhVienModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QLDoAnSinhVienModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

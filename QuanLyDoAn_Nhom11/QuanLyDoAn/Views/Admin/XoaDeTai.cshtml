@@ -1,0 +1,45 @@
+﻿@model QuanLyDoAn.DeTai
+
+@{
+    ViewBag.Title = "XoaDeTai";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<h3>Bạn có chắc xóa đề tài chứ?</h3>
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.tenDeTai)</th>
+                <th>@Html.DisplayNameFor(model => model.soSVThamGia)</th>
+                <th>@Html.DisplayNameFor(model => model.ghiChu)</th>
+                <th>@Html.DisplayNameFor(model => model.soSVDaDangKy)</th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="danger">
+                <td>@Html.DisplayFor(model => model.tenDeTai)</td>
+                <td>@Html.DisplayFor(model => model.soSVThamGia)</td>
+                <td>@Html.DisplayFor(model => model.ghiChu)</td>
+                <td>@Html.DisplayFor(model => model.soSVDaDangKy)</td>
+ 
+
+            </tr>
+        </tbody>
+    </table>
+   
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-success" /> 
+           
+        </div>
+    }
+</div>

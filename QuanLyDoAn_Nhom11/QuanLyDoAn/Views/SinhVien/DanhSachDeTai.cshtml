@@ -1,0 +1,80 @@
+﻿@model IEnumerable<QuanLyDoAn.DeTai>
+
+@{
+    ViewBag.Title = "DanhSachDeTai";
+}
+<link href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+
+<h2>Danh sách đề tài</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            <p>Mã đề tài</p>
+        </th>
+        <th>
+            <p>Tên đề tài</p>
+        </th>
+        <th>
+            <p>Số sinh viên tham gia</p>
+        </th>
+        <th>
+            <p>Số sinh viên dăng ký</p>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="@item.maDeTai">
+            <td>
+                @Html.DisplayFor(modelItem => item.maDeTai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenDeTai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soSVThamGia)
+            </td>
+            <td>
+                <p> <span class="capnhatsoluong">@item.soSVDaDangKy</span>/<span>@item.soSVThamGia </span></p>
+            </td>
+            <td>
+                <button name="@item.maDeTai" class="btn btn-primary ">Đăng ký</button>
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = @Session["TaiKhoanAdmin"] })
+</div>
+
+
+<script>
+
+
+	$("button").click(function (e) {
+
+		e.preventDefault();
+		var madetai = $(this).attr("name");
+		$.post("/SinhVien/DangKyDeTai",
+			{
+				MaSinhVien:  @Session["TaiKhoanAdmin"],
+				MaDeTai: madetai
+			},
+			function (data, status) {
+				if (status == "success"&&data!="false") {
+					var select = "#" + madetai  + " .capnhatsoluong";
+					$(select).text(data);
+				}
+				else {
+					alert("Bạn đã đăng ký đề tài");
+				}
+			});
+	});
+
+</script>
+

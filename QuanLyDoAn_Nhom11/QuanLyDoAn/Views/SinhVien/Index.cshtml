@@ -1,0 +1,104 @@
+﻿@model QuanLyDoAn.SinhVien
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #e7ecf0;
+    }
+
+    img {
+        padding-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    a {
+        text-decoration: none;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    p {
+        margin: 5px;
+    }
+
+    .row {
+        margin: auto;
+        width: 100%;
+    }
+</style>
+
+
+<h2 style="margin-bottom:10px;margin-top:20px;background-color:white; padding:10px; border-radius:10px; color:#0099cc;">Trang Thông Tin Sinh Viên</h2>
+<div class="row" style="box-sizing:border-box;">
+    <div class="col-sm-2" style="background-color:white; margin:5px; border-radius:10px;">
+        <img class="img-responsive" style="height:auto; max-width:100%;  padding-top:5px; padding-bottom:5px;" src="~/Images/img_avatar.png" />
+    </div>
+    <div class="col-sm-4" style="background-color:white; margin:5px;border-radius:10px;">
+        <h3 style="color:#0099cc;padding-top:10px;">THÔNG TIN SINH VIÊN</h3>
+        <p>Mã sinh viên: <strong> @Model.maSinhVien</strong></p>
+        <p>Tên Sinh Viên:<strong>  @Model.tenSinhVien</strong></p>
+        <p>Email: <strong> @Model.email</strong></p>
+        <p>Số điện thoại: <strong>@Model.soDienThoai</strong> </p>
+        <p>Ngày sinh:<strong> @Model.ngaySinh</strong></p>
+        <p>Giới tính: <strong> @Model.gioiTinh</strong></p>
+    </div>
+    <div class="col-sm-5" style="background-color:#e7ecf0; margin:5px;border-radius:10px;">
+        <div class="row" style="height:50%; ">
+            <div class="col-sm-5" style="margin:5px; background-color:white;border-radius:10px;">
+                <a href="~/SinhVien/DanhSachDeTai">
+                    <img src="~/Images/Diem.png" />
+                    <p>Danh sách đề tài</p>
+                </a>
+            </div>
+            <div class="col-sm-5" style="margin:5px; background-color:white;border-radius:10px;">
+                <a href="~/SinhVien/Edit/@Model.maSinhVien">
+                    <img src="~/Images/Diem.png" />
+                    <p>Cập nhật thông tin</p>
+                </a>
+            </div>
+        </div>
+        <div class="row" style="height:50%; ">
+            <div class="col-sm-5" style="margin:5px; background-color:white;border-radius:10px;">
+                <a id="LinkTTDeTai" href="~/SinhVien/ThongTinDeTai/@Model.maDeTai">
+                    <img src="~/Images/Diem.png" />
+                    <p>Xem thông tin đề tài</p>
+                </a>
+            </div>
+            <div class="col-sm-5" style="margin:5px; background-color:white;border-radius:10px;">
+                <a href="~/SinhVien/DanhSachDeTai">
+                    <img src="~/Images/Diem.png" />
+                    <p>Xem điểm</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+	$(document).ready(function () {
+		if (@ViewBag.MaDeTai== null) {
+			$("#LinkTTDeTai").attr("href", "#");
+			$("#LinkTTDeTai").click(function () {
+				alert("Bạn Chưa Đăng Ký Đề Tài");
+			})
+		}
+	});
+</script>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<QuanLyDoAn.DeTai>
+
+@{
+    ViewBag.Title = "DeTai";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align: center; padding-top:20px">DANH SÁCH ĐỀ TÀI</h2>
+
+<p style="display: flex; justify-content: flex-end;">
+    <a class="nav-link" href="@Url.Action("ThemDeTai", "Admin")"> Thêm Đề Tài</a>
+     
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tenDeTai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soSVThamGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ghiChu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soSVDaDangKy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenDeTai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soSVThamGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ghiChu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soSVDaDangKy)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "SuaDeTai", new { id=item.maDeTai }) |
+            @Html.ActionLink("Chi Tiết", "ChiTietDeTai", new { id=item.maDeTai }) |
+            @Html.ActionLink("Xóa", "XoaDeTai", new { id=item.maDeTai })
+        </td>
+    </tr>
+}
+
+</table>
